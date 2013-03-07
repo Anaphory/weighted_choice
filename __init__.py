@@ -13,7 +13,7 @@ def weighted_choice(weights, random=numpy.random):
     proportional to w_i.
     """
     try:
-        rnd = random.random() * sum(weights.itervalues())
+        rnd = random.random() * sum(weights.values())
     except AttributeError:
         rnd = random.random() * sum(weights)
         
@@ -21,7 +21,7 @@ def weighted_choice(weights, random=numpy.random):
         raise ValueError("Sum of weights is negative")
 
     try:
-        iteration = weights.iteritems()
+        iteration = weights.items()
     except AttributeError:
         iteration = enumerate(weights)
     for i, w in iteration:
@@ -32,7 +32,7 @@ def weighted_choice(weights, random=numpy.random):
             return i
     raise ValueError("Sum of weights is not positive")
 
-W, V, TW = range(3)
+W, V, TW = (0, 1, 2)
 
 def weighted_heap(frequencies):
     # h is the heap. It's like a binary tree that lives in an array.
